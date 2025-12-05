@@ -2,6 +2,7 @@
 
 import LiquidEtherSimple from "./LiquidEtherSimple";
 import GooeyNav from "./GooeyNav";
+import MainNav from "./MainNav";
 import MagicBento from "./MagicBento";
 import Masonry from "./Masonry";
 import LaserFlow from "./LaserFlow";
@@ -300,8 +301,11 @@ export default function LiquidBackgroundWithImage() {
         />
       </div>
 
-      {/* 🔥 GOOEY NAV (fixo no topo) */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+      {/* 🔥 NAV: simples no mobile, Gooey no desktop */}
+      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-black/60 backdrop-blur md:hidden">
+        <MainNav items={navItems} />
+      </div>
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
         <GooeyNav
           items={navItems}
           particleCount={15}
@@ -311,7 +315,7 @@ export default function LiquidBackgroundWithImage() {
       </div>
 
       {/* 🔥 HERO CONTENT */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 px-6 text-white">
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 pt-16 px-6 md:pt-24 text-white">
         <div
           className="max-w-4xl flex flex-col gap-4 text-center"
           style={{ textShadow: "0 10px 30px rgba(0,0,0,0.55)" }}
@@ -319,7 +323,7 @@ export default function LiquidBackgroundWithImage() {
           <p className="text-lg md:text-xl font-semibold leading-7">
             Projetamos de forma inesquecível identidades e marketing nítido
           </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
             Então tu não só competes,
             <br />
             <ShinyText text="TU DOMINAS!" speed={3} />
