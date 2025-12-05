@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import CustomCursor from "@/components/CustomCursor";
+import LiquidCursor from "@/components/LiquidCursor";
 
 export const metadata: Metadata = {
   title: "Witty Wolf Studio - Design & Marketing",
@@ -29,6 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <LiquidCursor />
         <CustomCursor />
         {children}
         <CookieBanner />
