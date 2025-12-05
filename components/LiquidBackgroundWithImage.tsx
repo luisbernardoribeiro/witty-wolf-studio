@@ -7,6 +7,7 @@ import Masonry from "./Masonry";
 import LaserFlow from "./LaserFlow";
 import ShinyText from "./ShinyText";
 import Dock from "./Dock";
+import HeroBackgroundWithVideo from "./HeroBackgroundWithVideo";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiChevronDown, FiInstagram, FiLinkedin, FiMail, FiPhoneCall, FiFacebook } from "react-icons/fi";
@@ -169,14 +170,8 @@ export default function LiquidBackgroundWithImage() {
     <>
       <div className="relative w-full h-[100vh] overflow-hidden bg-black">
 
-      {/* 🔥 BACKGROUND IMAGE (Witty Wolf Marca) */}
-      <Image
-        src="/wittywolf-bg.jpg"
-        alt="Witty Wolf Background"
-        fill
-        className="object-cover z-0 opacity-80"
-        priority
-      />
+      {/* 🔥 BACKGROUND VIDEO/IMAGE (Witty Wolf Marca) */}
+      <HeroBackgroundWithVideo />
 
       {/* 🔥 LIQUID ETHER OVERLAY */}
       <div className="absolute inset-0 z-10 mix-blend-screen opacity-70">
