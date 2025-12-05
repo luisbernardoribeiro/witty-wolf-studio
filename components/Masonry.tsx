@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./Masonry.module.css";
+import Image from "next/image";
 
 type MasonryItem = {
   id: string;
@@ -94,6 +95,38 @@ const Masonry = ({
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
   const hasMounted = useRef(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % items.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen]);
 
   const getInitialPosition = (item: any) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
@@ -247,41 +280,103 @@ const Masonry = ({
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={styles.masonryList}
-      style={{ height: containerHeight || undefined }}
-    >
-      {grid.map((item) => {
-        return (
-          <div
-            key={item.id}
-            data-key={item.id}
-            className={styles.masonryItemWrapper}
-            onClick={() => window.open(item.url, "_blank", "noopener")}
-            onMouseEnter={(e) => handleMouseEnter(e, item)}
-            onMouseLeave={(e) => handleMouseLeave(e, item)}
-            role="link"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                window.open(item.url, "_blank", "noopener");
-              }
-            }}
-          >
+    <>
+      <div
+        ref={containerRef}
+        className={styles.masonryList}
+        style={{ height: containerHeight || undefined }}
+      >
+        {grid.map((item, index) => {
+          return (
             <div
-              className={styles.masonryItemImg}
-              style={{ backgroundImage: `url(${item.img})` }}
+              key={item.id}
+              data-key={item.id}
+              className={styles.masonryItemWrapper}
+              onClick={() => openLightbox(index)}
+              onMouseEnter={(e) => handleMouseEnter(e, item)}
+              onMouseLeave={(e) => handleMouseLeave(e, item)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openLightbox(index);
+                }
+              }}
             >
-              {colorShiftOnHover && (
-                <div className={styles.colorOverlay} />
-              )}
+              <div
+                className={styles.masonryItemImg}
+                style={{ backgroundImage: `url(${item.img})` }}
+              >
+                {colorShiftOnHover && (
+                  <div className={styles.colorOverlay} />
+                )}
+              </div>
             </div>
+          );
+        })}
+      </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
+            aria-label="Close"
+          >
+            ×
+          </button>
+
+          {/* Previous button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+
+          {/* Image */}
+          <div
+            className="relative max-w-[90vw] max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={items[currentImageIndex].img}
+              alt={`Portfolio item ${currentImageIndex + 1}`}
+              width={1200}
+              height={800}
+              className="max-w-full max-h-[90vh] w-auto h-auto object-contain"
+            />
           </div>
-        );
-      })}
-    </div>
+
+          {/* Next button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
+            aria-label="Next"
+          >
+            ›
+          </button>
+
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm">
+            {currentImageIndex + 1} / {items.length}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
