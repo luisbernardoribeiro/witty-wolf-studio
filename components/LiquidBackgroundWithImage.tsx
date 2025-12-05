@@ -70,13 +70,13 @@ const portfolioItems = [
   },
   {
     id: "3",
-    img: "/wittywolf-bg.jpg",
+    img: "/portfolio/wittywolf-bg.jpg",
     url: "#",
     height: 450,
   },
   {
     id: "4",
-    img: "/home_Witty_wolf.png",
+    img: "/portfolio/home_Witty_wolf.png",
     url: "#",
     height: 350,
   },
