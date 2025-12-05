@@ -116,7 +116,7 @@ export default function LiquidCursor() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[99998]"
+      className="fixed inset-0 pointer-events-none z-[49999]"
       style={{ mixBlendMode: "screen" }}
     />
   );

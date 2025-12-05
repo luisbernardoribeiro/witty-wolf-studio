@@ -54,15 +54,7 @@ const dockItems = [
 // Place all portfolio files in /public/portfolio/
 const portfolioItems = [
   {
-    id: "video1",
-    img: "/portfolio/video_trovao_team.mov",
-    url: "#",
-    height: 400,
-    type: "video" as const,
-    poster: "/portfolio/cartaovisita_logo_alternativa.png"
-  },
-  {
-    id: "2",
+    id: "1",
     img: "/portfolio/cartaovisita_logo_alternativa.png",
     url: "#",
     height: 300,
