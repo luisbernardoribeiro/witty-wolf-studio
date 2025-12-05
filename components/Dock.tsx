@@ -8,7 +8,7 @@ interface DockItemProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
-  mouseX: ReturnType<typeof useMotionValue>;
+  mouseX: ReturnType<typeof useMotionValue<number>>;
   spring?: Parameters<typeof useSpring>[1];
   distance: number;
   magnification: number;
