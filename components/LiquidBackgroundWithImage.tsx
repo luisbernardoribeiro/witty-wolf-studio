@@ -50,25 +50,17 @@ const dockItems = [
 ];
 
 // Portfolio items - can be images OR videos
-// For videos, add: type: "video", poster: "/path/to/thumbnail.jpg"
-// Example video item:
-// {
-//   id: "video1",
-//   img: "/portfolio/my-video.mp4",
-//   url: "#",
-//   height: 400,
-//   type: "video",
-//   poster: "/portfolio/video-thumbnail.jpg"
-// }
+// For videos, add: type: "video", poster: "/portfolio/thumbnail.jpg"
+// Place all portfolio files in /public/portfolio/
 const portfolioItems = [
-  // Example with real video from your files
+  // Example with real video
   {
     id: "video1",
-    img: "/video_trovao_team",
+    img: "/portfolio/video_trovao_team.mov",
     url: "#",
     height: 400,
     type: "video" as const,
-    poster: "/cartaovitita_logo_alternativa"
+    poster: "/portfolio/cartaovisita_logo_alternativa.png"
   },
   {
     id: "1",
