@@ -19,7 +19,7 @@ function DockItem({ children, className = '', onClick, mouseX, spring, distance,
   const ref = useRef<HTMLDivElement | null>(null);
   const isHovered = useMotionValue(0);
 
-  const mouseDistance = useTransform(mouseX, (val) => {
+  const mouseDistance = useTransform(mouseX, (val: number) => {
     const rect: { x: number; width: number } = ref.current?.getBoundingClientRect() ?? {
       x: 0,
       width: baseItemSize,
