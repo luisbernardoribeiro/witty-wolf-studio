@@ -1,18 +1,31 @@
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './GooeyNav.css';
 
-const GooeyNav = ({
+type GooeyNavItem = {
+  label: string;
+  href?: string;
+  icon?: React.ReactNode;
+};
+
+type GooeyNavProps = {
+  items: GooeyNavItem[];
+  animationTime?: number;
+  particleCount?: number;
+  particleDistances?: [number, number];
+};
+
+const GooeyNav: React.FC<GooeyNavProps> = ({
   items,
   animationTime = 600,
   particleCount = 15,
   particleDistances = [90, 10],
-  particleR = 100,
-  timeVariance = 300,
-  colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
 }) => {
+  const particleR = 100;
+  const timeVariance = 300;
+  const colors = [1, 2, 3, 1, 2, 3, 1, 4];
+  const initialActiveIndex = 0;
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
