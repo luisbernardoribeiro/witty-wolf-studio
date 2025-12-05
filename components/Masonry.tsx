@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./Masonry.module.css";
-import Image from "next/image";
+import NextImage from "next/image";
 
 type MasonryItem = {
   id: string;
@@ -374,7 +374,7 @@ const Masonry = ({
                 Your browser does not support the video tag.
               </video>
             ) : (
-              <Image
+              <NextImage
                 src={items[currentImageIndex].img}
                 alt={`Portfolio item ${currentImageIndex + 1}`}
                 width={1200}

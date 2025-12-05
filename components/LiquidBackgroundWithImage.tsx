@@ -62,7 +62,6 @@ const portfolioItems = [
     type: "video" as const,
     poster: "/portfolio/cartaovisita_logo_alternativa.png"
   },
-  // Using existing image as placeholders - replace with your real portfolio
   {
     id: "2",
     img: "/portfolio/cartaovisita_logo_alternativa.png",
@@ -80,12 +79,6 @@ const portfolioItems = [
     img: "/home_Witty_wolf.png",
     url: "#",
     height: 350,
-  },
-  {
-    id: "5",
-    img: "/G_Witty_wolf.jpg",
-    url: "#",
-    height: 400,
   },
 ];
 
