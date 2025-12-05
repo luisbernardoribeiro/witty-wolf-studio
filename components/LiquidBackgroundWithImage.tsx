@@ -290,8 +290,13 @@ export default function LiquidBackgroundWithImage() {
         <LiquidEtherSimple />
       </div>
 
-      {/* 🔥 LOGO (fixo no topo) */}
-      <div className="fixed top-6 left-6 z-50">
+      {/* 🔥 NAV: menu hamburguer com logo em todas as resoluções abaixo de 1200px */}
+      <div className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-4 py-3 bg-black/60 backdrop-blur xl:hidden">
+        <MainNav items={navItems} />
+      </div>
+      
+      {/* 🔥 LOGO grande e NAV Gooey - apenas desktop grande (>= 1200px) */}
+      <div className="fixed top-6 left-6 z-40 hidden xl:block">
         <Image
           src="/home_Witty_wolf.png"
           alt="Witty Wolf Logo"
@@ -300,12 +305,7 @@ export default function LiquidBackgroundWithImage() {
           className="drop-shadow-2xl"
         />
       </div>
-
-      {/* 🔥 NAV: simples no mobile, Gooey no desktop */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 bg-black/60 backdrop-blur md:hidden">
-        <MainNav items={navItems} />
-      </div>
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+      <div className="fixed top-6 right-6 z-50 hidden xl:block">
         <GooeyNav
           items={navItems}
           particleCount={15}

@@ -67,6 +67,11 @@
   text-shadow: none;
 }
 
+/* Hide the original text for the active item so only the animated text layer is visible */
+.gooey-nav-container nav ul li.active a {
+  color: transparent;
+}
+
 .gooey-nav-container nav ul li.active::after {
   opacity: 1;
   transform: scale(1);
@@ -87,6 +92,8 @@
 
 .gooey-nav-container .effect.text {
   color: white;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   transition: color 0.3s ease;
 }
 
