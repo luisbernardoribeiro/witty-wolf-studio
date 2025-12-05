@@ -116,7 +116,7 @@ export default function Dock({
   dockHeight = 256,
   baseItemSize = 50,
 }: DockProps) {
-  const mouseX = useMotionValue(Infinity);
+  const mouseX = useMotionValue<number>(Infinity);
 
   const maxHeight = useMemo(() => Math.max(dockHeight, magnification + magnification / 2 + 4), [magnification, dockHeight]);
 
