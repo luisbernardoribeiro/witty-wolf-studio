@@ -215,6 +215,24 @@ const portfolioItems = [
     url: "#",
     height: 380,
   },
+  {
+    id: "28",
+    img: "/portfolio/Apresentacao_LOGO_MPIX.png",
+    url: "#",
+    height: 420,
+  },
+  {
+    id: "29",
+    img: "/portfolio/king-portugal.png",
+    url: "#",
+    height: 340,
+  },
+  {
+    id: "30",
+    img: "/portfolio/haloween_final.png",
+    url: "#",
+    height: 360,
+  },
 ];
 
 export default function LiquidBackgroundWithImage() {
