@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Witty Wolf Studio
 
 Site oficial do Witty Wolf Studio - Design & Marketing Studio.
@@ -32,3 +33,7 @@ Abrir [http://localhost:3000](http://localhost:3000) no browser.
 - Tailwind CSS
 - Framer Motion
 - React Icons
+=======
+# witty-wolf-studio
+Witty Wolf Studio Landing Page
+>>>>>>> 4d044aa4a8871163bd7842904e575874f9c7c029
