@@ -53,7 +53,6 @@ const dockItems = [
 // For videos, add: type: "video", poster: "/portfolio/thumbnail.jpg"
 // Place all portfolio files in /public/portfolio/
 const portfolioItems = [
-  // Example with real video
   {
     id: "video1",
     img: "/portfolio/video_trovao_team.mov",
@@ -67,18 +66,6 @@ const portfolioItems = [
     img: "/portfolio/cartaovisita_logo_alternativa.png",
     url: "#",
     height: 300,
-  },
-  {
-    id: "3",
-    img: "/portfolio/wittywolf-bg.jpg",
-    url: "#",
-    height: 450,
-  },
-  {
-    id: "4",
-    img: "/portfolio/home_Witty_wolf.png",
-    url: "#",
-    height: 350,
   },
 ];
 
@@ -139,7 +126,7 @@ export default function LiquidBackgroundWithImage() {
       {/* 🔥 LOGO (fixo no topo) */}
       <div className="fixed top-6 left-6 z-50">
         <Image
-          src="/portfolio/home_Witty_wolf.png"
+          src="/home_Witty_wolf.png"
           alt="Witty Wolf Logo"
           width={360}
           height={360}
