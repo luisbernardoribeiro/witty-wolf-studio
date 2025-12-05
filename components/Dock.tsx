@@ -1,5 +1,6 @@
 'use client';
 
+// Dock component with macOS-style magnification effect
 import React, { Children, cloneElement, useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import './Dock.css';
