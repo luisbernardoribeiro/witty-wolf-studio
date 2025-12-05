@@ -49,6 +49,17 @@ const dockItems = [
   },
 ];
 
+// Portfolio items - can be images OR videos
+// For videos, add: type: "video", poster: "/path/to/thumbnail.jpg"
+// Example video item:
+// {
+//   id: "video1",
+//   img: "/portfolio/my-video.mp4",
+//   url: "#",
+//   height: 400,
+//   type: "video",
+//   poster: "/portfolio/video-thumbnail.jpg"
+// }
 const portfolioItems = [
   {
     id: "1",

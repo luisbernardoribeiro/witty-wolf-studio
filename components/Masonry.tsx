@@ -10,6 +10,8 @@ type MasonryItem = {
   img: string;
   url: string;
   height: number;
+  type?: "image" | "video"; // New: specify if it's a video
+  poster?: string; // New: video thumbnail/poster
 };
 
 type MasonryProps = {
@@ -306,10 +308,22 @@ const Masonry = ({
             >
               <div
                 className={styles.masonryItemImg}
-                style={{ backgroundImage: `url(${item.img})` }}
+                style={{
+                  backgroundImage: item.type === "video" && item.poster
+                    ? `url(${item.poster})`
+                    : `url(${item.img})`
+                }}
               >
                 {colorShiftOnHover && (
                   <div className={styles.colorOverlay} />
+                )}
+                {/* Video play icon overlay */}
+                {item.type === "video" && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -344,18 +358,30 @@ const Masonry = ({
             ‹
           </button>
 
-          {/* Image */}
+          {/* Image or Video */}
           <div
             className="relative max-w-[90vw] max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={items[currentImageIndex].img}
-              alt={`Portfolio item ${currentImageIndex + 1}`}
-              width={1200}
-              height={800}
-              className="max-w-full max-h-[90vh] w-auto h-auto object-contain"
-            />
+            {items[currentImageIndex].type === "video" ? (
+              <video
+                src={items[currentImageIndex].img}
+                controls
+                autoPlay
+                className="max-w-full max-h-[90vh] w-auto h-auto"
+                poster={items[currentImageIndex].poster}
+              >
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <Image
+                src={items[currentImageIndex].img}
+                alt={`Portfolio item ${currentImageIndex + 1}`}
+                width={1200}
+                height={800}
+                className="max-w-full max-h-[90vh] w-auto h-auto object-contain"
+              />
+            )}
           </div>
 
           {/* Next button */}
