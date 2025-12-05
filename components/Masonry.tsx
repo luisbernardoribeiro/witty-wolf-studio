@@ -336,12 +336,14 @@ const Masonry = ({
         <div
           className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center"
           onClick={closeLightbox}
+          style={{ cursor: 'none' }}
         >
           {/* Close button */}
           <button
             onClick={closeLightbox}
             className="absolute top-6 right-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
             aria-label="Close"
+            style={{ cursor: 'none' }}
           >
             ×
           </button>
@@ -354,6 +356,7 @@ const Masonry = ({
             }}
             className="absolute left-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
             aria-label="Previous"
+            style={{ cursor: 'none' }}
           >
             ‹
           </button>
@@ -362,6 +365,7 @@ const Masonry = ({
           <div
             className="relative max-w-[90vw] max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
+            style={{ cursor: 'none' }}
           >
             {items[currentImageIndex].type === "video" ? (
               <video
@@ -370,6 +374,7 @@ const Masonry = ({
                 autoPlay
                 className="max-w-full max-h-[90vh] w-auto h-auto"
                 poster={items[currentImageIndex].poster}
+                style={{ cursor: 'none' }}
               >
                 Your browser does not support the video tag.
               </video>
@@ -380,6 +385,7 @@ const Masonry = ({
                 width={1200}
                 height={800}
                 className="max-w-full max-h-[90vh] w-auto h-auto object-contain"
+                style={{ cursor: 'none' }}
               />
             )}
           </div>
@@ -392,6 +398,7 @@ const Masonry = ({
             }}
             className="absolute right-6 text-white text-4xl hover:text-pink-400 transition-colors z-10"
             aria-label="Next"
+            style={{ cursor: 'none' }}
           >
             ›
           </button>
