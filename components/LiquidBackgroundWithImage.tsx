@@ -139,7 +139,7 @@ export default function LiquidBackgroundWithImage() {
       {/* 🔥 LOGO (fixo no topo) */}
       <div className="fixed top-6 left-6 z-50">
         <Image
-          src="/home_Witty_wolf.png"
+          src="/portfolio/home_Witty_wolf.png"
           alt="Witty Wolf Logo"
           width={360}
           height={360}

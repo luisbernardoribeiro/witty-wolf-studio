@@ -35,7 +35,7 @@ export default function HeroBackgroundWithVideo() {
       {/* Static Image Background (after 10 seconds or if video fails) */}
       {!showVideo && (
         <Image
-          src="/wittywolf-bg.jpg"
+          src="/portfolio/wittywolf-bg.jpg"
           alt="Witty Wolf Background"
           fill
           className="object-cover z-0 opacity-80"

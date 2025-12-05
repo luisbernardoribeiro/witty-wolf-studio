@@ -10,7 +10,7 @@ export default function MainNav() {
       <Link href="/" className="flex items-center gap-3">
         <div className="relative w-[220px] h-[50px]">
           <Image
-            src="/home_Witty_wolf.png"
+            src="/portfolio/home_Witty_wolf.png"
             alt="Witty Wolf | Design & Marketing Studio"
             fill
             className="object-contain"
