@@ -1,0 +1,41 @@
+.masonryList {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.masonryItemWrapper {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+  transform-origin: center;
+}
+
+.masonryItemImg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: inherit;
+  transition: filter 0.3s ease;
+}
+
+.masonryItemWrapper:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 4px;
+}
+
+.colorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 0, 150, 0.5), rgba(0, 150, 255, 0.5));
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
