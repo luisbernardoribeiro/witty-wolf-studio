@@ -61,6 +61,15 @@ const dockItems = [
 //   poster: "/portfolio/video-thumbnail.jpg"
 // }
 const portfolioItems = [
+  // Example with real video from your files
+  {
+    id: "video1",
+    img: "/video_trovao_team",
+    url: "#",
+    height: 400,
+    type: "video" as const,
+    poster: "/cartaovitita_logo_alternativa"
+  },
   {
     id: "1",
     img: "https://picsum.photos/id/1015/600/900?grayscale",
