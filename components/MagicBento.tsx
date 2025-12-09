@@ -18,8 +18,7 @@ const cardData = [
       'Criação de identidade visual (logótipo, paleta, tipografia)',
       'Rebranding e modernização de marca',
       'Design editorial (flyers, brochuras, catálogos)',
-      'Design de embalagens',
-      'Kits de marca e guidelines visuais'
+      'Design de embalagens'
     ],
     label: 'Inclui'
   },
