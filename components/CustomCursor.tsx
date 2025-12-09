@@ -5,8 +5,16 @@ import { useEffect, useState } from "react";
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile on mount
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -31,8 +39,12 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", updatePosition);
       window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
+
+  // Don't render cursor on mobile
+  if (isMobile) return null;
 
   return (
     <div

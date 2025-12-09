@@ -208,15 +208,6 @@ const Masonry = ({
   useLayoutEffect(() => {
     if (!imagesReady) return;
 
-    // Disable complex animations on slow devices
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    
-    if (prefersReducedMotion) {
-      // Skip animations for accessibility
-      hasMounted.current = true;
-      return;
-    }
-
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
       const animationProps = {
@@ -237,7 +228,7 @@ const Masonry = ({
           ...(blurToFocus && { filter: "blur(10px)" }),
         };
 
-        // Use simpler, faster animations
+        // Simpler, faster animations
         gsap.fromTo(
           selector,
           initialState,
@@ -245,15 +236,15 @@ const Masonry = ({
             opacity: 1,
             ...animationProps,
             ...(blurToFocus && { filter: "blur(0px)" }),
-            duration: 0.5, // Reduced from 0.8
-            ease: "power2.out", // Simplified from power3.out
-            delay: Math.min(index * stagger, 0.3), // Cap delay
+            duration: 0.5,
+            ease: "power2.out",
+            delay: Math.min(index * stagger, 0.3),
           }
         );
       } else {
         gsap.to(selector, {
           ...animationProps,
-          duration: 0.4, // Reduced from 0.6
+          duration: 0.4,
           ease: "power2.out",
           overwrite: "auto",
         });
