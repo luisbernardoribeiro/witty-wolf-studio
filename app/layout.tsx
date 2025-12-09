@@ -30,8 +30,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <LiquidCursor />
-        <CustomCursor />
+        {/* Only show cursors on desktop */}
+        <div className="hidden md:block">
+          <LiquidCursor />
+          <CustomCursor />
+        </div>
         {children}
         <CookieBanner />
       </body>
