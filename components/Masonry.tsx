@@ -98,6 +98,8 @@ const Masonry = ({
   const [imagesReady, setImagesReady] = useState(false);
   const hasMounted = useRef(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openLightbox = (index: number) => {
@@ -130,6 +132,22 @@ const Masonry = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxOpen]);
 
+  // Setup Intersection Observer for lazy loading
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleItems((prev) => new Set([...prev, entry.target.getAttribute("data-key") || ""]));
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    return () => observerRef.current?.disconnect();
+  }, []);
+
   const getInitialPosition = (item: any) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
     if (!containerRect) return { x: item.x, y: item.y + 100 };
@@ -161,8 +179,9 @@ const Masonry = ({
   };
 
   useEffect(() => {
-    preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
-  }, [items]);
+    // Remove aggressive preload - only load when needed
+    setImagesReady(true);
+  }, []);
 
   const { grid, containerHeight } = useMemo(() => {
     if (!width) return { grid: [] as any[], containerHeight: 0 };
@@ -289,6 +308,7 @@ const Masonry = ({
         style={{ height: containerHeight || undefined }}
       >
         {grid.map((item, index) => {
+          const isVisible = visibleItems.has(item.id);
           return (
             <div
               key={item.id}
@@ -299,6 +319,11 @@ const Masonry = ({
               onMouseLeave={(e) => handleMouseLeave(e, item)}
               role="button"
               tabIndex={0}
+              ref={(el) => {
+                if (el && observerRef.current) {
+                  observerRef.current.observe(el);
+                }
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
@@ -309,9 +334,11 @@ const Masonry = ({
               <div
                 className={styles.masonryItemImg}
                 style={{
-                  backgroundImage: item.type === "video" && item.poster
-                    ? `url(${item.poster})`
-                    : `url(${item.img})`
+                  backgroundImage: isVisible
+                    ? (item.type === "video" && item.poster
+                        ? `url(${item.poster})`
+                        : `url(${item.img})`)
+                    : undefined,
                 }}
               >
                 {colorShiftOnHover && (

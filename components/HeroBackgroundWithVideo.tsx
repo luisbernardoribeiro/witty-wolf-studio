@@ -26,6 +26,8 @@ export default function HeroBackgroundWithVideo() {
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-80"
           onEnded={() => setShowVideo(false)}
         >
+          {/* Try WebM first (better compression), fall back to MP4 */}
+          <source src="/hero-video.webm" type="video/webm" />
           <source src="/hero-video.mp4" type="video/mp4" />
           {/* Fallback to image if video doesn't play */}
           Your browser does not support the video tag.
