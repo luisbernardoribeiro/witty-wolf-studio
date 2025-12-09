@@ -7,6 +7,9 @@ import LiquidCursor from "@/components/LiquidCursor";
 export const metadata: Metadata = {
   title: "Witty Wolf Studio - Design & Marketing",
   description: "Projetamos de forma inesquecível identidades e marketing nítido.",
+  other: {
+    'cache-control': 'no-cache, no-store, max-age=0',
+  },
 };
 
 export default function RootLayout({
