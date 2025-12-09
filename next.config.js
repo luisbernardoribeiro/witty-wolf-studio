@@ -15,15 +15,8 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
   },
-  // Enable compression and optimization
+  // Enable compression
   compress: true,
-  optimizeFonts: true,
-  // Enable SWR for static optimizations
-  swcMinify: true,
-  // Reduce JavaScript
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   // Production optimization
   productionBrowserSourceMaps: false,
   poweredByHeader: false,

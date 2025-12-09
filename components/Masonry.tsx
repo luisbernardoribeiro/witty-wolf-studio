@@ -138,7 +138,14 @@ const Masonry = ({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleItems((prev) => new Set([...prev, entry.target.getAttribute("data-key") || ""]));
+            const key = entry.target.getAttribute("data-key");
+            if (key) {
+              setVisibleItems((prev) => {
+                const newSet = new Set(prev);
+                newSet.add(key);
+                return newSet;
+              });
+            }
           }
         });
       },
