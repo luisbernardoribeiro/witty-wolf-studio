@@ -1,39 +1,18 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import GooeyNav from "./GooeyNav";
 import MainNav from "./MainNav";
+import MagicBento from "./MagicBento";
+import Masonry from "./Masonry";
+import LaserFlow from "./LaserFlow";
+import ShinyText from "./ShinyText";
+import Dock from "./Dock";
 import HeroBackgroundWithVideo from "./HeroBackgroundWithVideo";
+import LiquidEtherSimple from "./LiquidEtherSimple";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiChevronDown, FiInstagram, FiLinkedin, FiMail, FiPhoneCall, FiFacebook } from "react-icons/fi";
 import { useRef, useState } from "react";
-
-// Lazy load heavy components (with loading fallback for better UX)
-const LiquidEtherSimple = dynamic(() => import("./LiquidEtherSimple"), { 
-  ssr: false,
-  loading: () => null 
-});
-const MagicBento = dynamic(() => import("./MagicBento"), { 
-  ssr: false,
-  loading: () => null 
-});
-const Masonry = dynamic(() => import("./Masonry"), { 
-  ssr: false,
-  loading: () => null 
-});
-const LaserFlow = dynamic(() => import("./LaserFlow"), { 
-  ssr: false,
-  loading: () => null 
-});
-const ShinyText = dynamic(() => import("./ShinyText"), { 
-  ssr: false,
-  loading: () => null 
-});
-const Dock = dynamic(() => import("./Dock"), { 
-  ssr: false,
-  loading: () => null 
-});
 
 const navItems = [
   { label: "Home", href: "#" },
