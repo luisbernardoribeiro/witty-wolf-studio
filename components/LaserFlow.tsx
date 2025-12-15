@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import styles from "./LaserFlow.module.css";
 
@@ -289,6 +289,11 @@ const LaserFlow = ({
   const emaDtRef = useRef(16.7);
   const pausedRef = useRef(false);
   const inViewRef = useRef(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   const hexToRGB = (hex: string) => {
     let c = hex.trim();
@@ -299,6 +304,8 @@ const LaserFlow = ({
   };
 
   useEffect(() => {
+    if (isMobile) return; // Skip on mobile
+    
     const mount = mountRef.current;
     if (!mount) return;
 

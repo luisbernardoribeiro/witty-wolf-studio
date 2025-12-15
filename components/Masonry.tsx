@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import styles from "./Masonry.module.css";
 import NextImage from "next/image";
 

@@ -20,6 +20,14 @@ const nextConfig = {
   // Production optimization
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Experimental performance features
+  experimental: {
+    optimizePackageImports: ['gsap', 'three', 'framer-motion'],
+  },
 }
 
 module.exports = nextConfig
