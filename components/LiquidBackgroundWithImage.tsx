@@ -9,13 +9,31 @@ import Link from "next/link";
 import { FiArrowUpRight, FiChevronDown, FiInstagram, FiLinkedin, FiMail, FiPhoneCall, FiFacebook } from "react-icons/fi";
 import { useRef, useState } from "react";
 
-// Lazy load heavy components
-const LiquidEtherSimple = dynamic(() => import("./LiquidEtherSimple"), { ssr: false });
-const MagicBento = dynamic(() => import("./MagicBento"), { ssr: false });
-const Masonry = dynamic(() => import("./Masonry"), { ssr: false });
-const LaserFlow = dynamic(() => import("./LaserFlow"), { ssr: false });
-const ShinyText = dynamic(() => import("./ShinyText"), { ssr: false });
-const Dock = dynamic(() => import("./Dock"), { ssr: false });
+// Lazy load heavy components (with loading fallback for better UX)
+const LiquidEtherSimple = dynamic(() => import("./LiquidEtherSimple"), { 
+  ssr: false,
+  loading: () => null 
+});
+const MagicBento = dynamic(() => import("./MagicBento"), { 
+  ssr: false,
+  loading: () => null 
+});
+const Masonry = dynamic(() => import("./Masonry"), { 
+  ssr: false,
+  loading: () => null 
+});
+const LaserFlow = dynamic(() => import("./LaserFlow"), { 
+  ssr: false,
+  loading: () => null 
+});
+const ShinyText = dynamic(() => import("./ShinyText"), { 
+  ssr: false,
+  loading: () => null 
+});
+const Dock = dynamic(() => import("./Dock"), { 
+  ssr: false,
+  loading: () => null 
+});
 
 const navItems = [
   { label: "Home", href: "#" },

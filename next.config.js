@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Fix turbopack root warning
+  turbopack: {
+    root: './00_SITE'
+  },
   images: {
     remotePatterns: [
       {
